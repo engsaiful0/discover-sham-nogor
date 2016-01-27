@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>শ্যামনগর</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css"/>
+        <script src="jquery/jquery-1.11.2.min.js"></script>
+        <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+        <script src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
+        <script type="text/javascript" charset="utf-8">
+
+
+            // Call onDeviceReady when Cordova is loaded.
+            //
+            // At this point, the document has loaded but cordova-2.0.0.js has not.
+            // When Cordova is loaded and talking with the native device,
+            // it will call the event `deviceready`.
+            //
+            function onLoad() {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+
+            // Cordova is loaded and it is now safe to call Cordova methods
+            //
+            function onDeviceReady() {
+                // Register the event listener
+                document.addEventListener("backbutton", onBackKeyDown, false);
+            }
+
+            // Handle the back button
+            //
+            function onBackKeyDown() {
+                navigator.app.exitApp();
+            }
+
+        </script>
+        <script>
+            jQuery(document).ready(function ($) {
+
+                var jssor_1_options = {
+                    $AutoPlay: true,
+                    $ArrowNavigatorOptions: {
+                        $Class: $JssorArrowNavigator$
+                    },
+                    $ThumbnailNavigatorOptions: {
+                        $Class: $JssorThumbnailNavigator$,
+                        $Cols: 9,
+                        $SpacingX: 3,
+                        $SpacingY: 3,
+                        $Align: 260
+                    }
+                };
+
+                var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+                //responsive code begin
+                //you can remove responsive code if you don't want the slider scales while window resizing
+                function ScaleSlider() {
+                    var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                    if (refSize) {
+                        refSize = Math.min(refSize, 600);
+                        jssor_1_slider.$ScaleWidth(refSize);
+                    } else {
+                        window.setTimeout(ScaleSlider, 30);
+                    }
+                }
+                ScaleSlider();
+                $(window).bind("load", ScaleSlider);
+                $(window).bind("resize", ScaleSlider);
+                $(window).bind("orientationchange", ScaleSlider);
+                //responsive code end
+            });
+        </script>
+
+        <style>
+
+            /* jssor slider arrow navigator skin 02 css */
+            /*
+            .jssora02l                  (normal)
+            .jssora02r                  (normal)
+            .jssora02l:hover            (normal mouseover)
+            .jssora02r:hover            (normal mouseover)
+            .jssora02l.jssora02ldn      (mousedown)
+            .jssora02r.jssora02rdn      (mousedown)
+            */
+            .jssora02l, .jssora02r {
+                display: block;
+                position: absolute;
+                /* size of arrow element */
+                width: 55px;
+                height: 55px;
+                cursor: pointer;
+                background: url('img_slider/a02.png') no-repeat;
+                overflow: hidden;
+            }
+            .jssora02l { background-position: -3px -33px; }
+            .jssora02r { background-position: -63px -33px; }
+            .jssora02l:hover { background-position: -123px -33px; }
+            .jssora02r:hover { background-position: -183px -33px; }
+            .jssora02l.jssora02ldn { background-position: -3px -33px; }
+            .jssora02r.jssora02rdn { background-position: -63px -33px; }
+
+            /* jssor slider thumbnail navigator skin 03 css */
+            /*
+            .jssort03 .p            (normal)
+            .jssort03 .p:hover      (normal mouseover)
+            .jssort03 .pav          (active)
+            .jssort03 .pdn          (mousedown)
+            */
+
+            .jssort03 .p {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 62px;
+                height: 32px;
+            }
+
+            .jssort03 .t {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+            }
+
+            .jssort03 .w, .jssort03 .pav:hover .w {
+                position: absolute;
+                width: 60px;
+                height: 30px;
+                border: white 1px dashed;
+                box-sizing: content-box;
+            }
+
+            .jssort03 .pdn .w, .jssort03 .pav .w {
+                border-style: solid;
+            }
+
+            .jssort03 .c {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 62px;
+                height: 32px;
+                background-color: #000;
+
+                filter: alpha(opacity=45);
+                opacity: .45;
+                transition: opacity .6s;
+                -moz-transition: opacity .6s;
+                -webkit-transition: opacity .6s;
+                -o-transition: opacity .6s;
+            }
+
+            .jssort03 .p:hover .c, .jssort03 .pav .c {
+                filter: alpha(opacity=0);
+                opacity: 0;
+            }
+
+            .jssort03 .p:hover .c {
+                transition: none;
+                -moz-transition: none;
+                -webkit-transition: none;
+                -o-transition: none;
+            }
+
+            * html .jssort03 .w {
+                width /**/: 62px;
+                height /**/: 32px;
+            }
+
+        </style>
+    </head>
+    <body onload="onLoad()">
+
+        <div data-role="page" data-theme="b">
+            <div data-role="header" data-tap-toggle="false" data-position="fixed" 
+                 style="text-align:center;">
+                <a href="index.html" class="ui-btn ui-icon-grid ui-btn-icon-left ui-btn-icon-notext">Home</a>
+                <img style="margin-top:15px;" src="img/header.png"/>
+                <a href="about.html" class="ui-btn ui-icon-info ui-btn-icon-left ui-btn-icon-notext">Information</a>	
+            </div>
+
+            <div data-role="main" class="ui-content">
+                <div class="ui-bar ui-bar-b" style="text-align:center;">
+                    <p>ফটো গ্যালারী</p>
+                </div>
+                <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden; visibility: hidden;">
+                    <!-- Loading Screen -->
+                    <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                        <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
+                        <div style="position:absolute;display:block;background:url('img_slider/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
+                    </div>
+                    <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/002.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-002.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/003.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-003.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/004.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-004.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/005.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-005.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/006.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-006.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/007.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-007.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/008.jpg" />
+                            <img data-u="thumb" src="img_slider/008.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/009.jpg" />
+                            <img data-u="thumb" src="img_slider/009.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/010.jpg" />
+                            <img data-u="thumb" src="img_slider/010.jpg" />
+                        </div>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="img_slider/011.jpg" />
+                            <img data-u="thumb" src="img_slider/thumb-011.jpg" />
+                        </div>
+                    </div>
+                    <!-- Thumbnail Navigator -->
+                    <div u="thumbnavigator" class="jssort03" style="position:absolute;left:0px;bottom:0px;width:600px;height:60px;" data-autocenter="1">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height:100%; background-color: #000; filter:alpha(opacity=30.0); opacity:0.3;"></div>
+                        <!-- Thumbnail Item Skin Begin -->
+                        <div u="slides" style="cursor: default;">
+                            <div u="prototype" class="p">
+                                <div class="w">
+                                    <div u="thumbnailtemplate" class="t"></div>
+                                </div>
+                                <div class="c"></div>
+                            </div>
+                        </div>
+                        <!-- Thumbnail Item Skin End -->
+                    </div>
+                    <!-- Arrow Navigator -->
+                    <span data-u="arrowleft" class="jssora02l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
+                    <span data-u="arrowright" class="jssora02r" style="top:0px;right:8px;width:55px;height:55px;" data-autocenter="2"></span>
+                    <a href="http://www.jssor.com" style="display:none">Slideshow Maker</a>
+                </div>
+
+                <!--				<div class="ui-corner-all custom-corners">
+                                                        <div class="ui-bar ui-bar-a">
+                                                                <h3>পূর্বতন উপজেলা নির্বাহী অফিসারগণ</h3>
+                                                        </div>
+                                                        <div class="ui-body ui-body-a">				
+                                                        
+                                                                <p style=text-align:left;>
+                                                                <strong>জনাব মোঃ আরাবুজ্জামান চৌধুরী</strong><br> কার্যকাল:১১-০১-৮২ হতে<br> ১০-০৯-৮৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব  শাখাওয়াত হোসেন</strong><br> কার্যকাল:১০-০৯-৮৩ হতে<br>০৫-০৪-৮৭পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ আবুল কাশেম(ভারপ্রাপ্ত) </strong><br> কার্যকাল: ০৫-০৪-৮৭ হতে<br>১৩-০৪-৮৭ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ শফিকুল আলম </strong><br> কার্যকাল:১৩-০৪-৮৭ হতে<br>০৯-০৪-৯০ পর্যন্ত<br><br>
+                                                                <strong>জনাব সরদার মতিয়ার রহমান(ভারপ্রাপ্ত)</strong><br> কার্যকাল: ০৯-০৪-৯০ হতে<br>২৬-০৫-৯০ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃআব্দুর রাজ্জাক</strong><br> কার্যকাল: ২৬-০৫-৯০ হতে<br>০৫-১১-৯১ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ সামছুল হক মিয়া</strong><br> কার্যকাল: ১৩-১০-৯১ হতে<br>০৫-১১-৯১পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ রবিউল হক(ভারপ্রাপ্ত) </strong><br> কার্যকাল:২৪-০১-৯৩ হতে<br>১৫-০২-৯৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব ম. আবুল কাশেম মাসুদ </strong><br> কার্যকাল: ১৫-০২-৯৩ হতে<br>২৭-০৯-৯৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব সৈয়দ মোস্তাফিজুর রহমান</strong><br> কার্যকাল:২৭-০৯-৯৩ হতে<br>১৪-১২-৯৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ মোস্তাগাউছুল হক(ভারপ্রাপ্ত)</strong><br> কার্যকাল:১৪-১২-৯৩ হতে<br>১৩-০৬-৯৪ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ ছবির আহম্মদ </strong><br> কার্যকাল: ১৩-০৬-৯৪ হতে<br>২৭-০৫-৯৭ পর্যন্ত<br><br>
+                                                                <strong>জনাব এস,এম,নজিবুল্লাহ </strong><br> কার্যকাল: ২৭-০৫-৯৭ হতে<br>০৪-০৬-০১ পর্যন্ত<br><br>
+                                                                <strong>জনাব আ.ন. আহম্মদ আলী</strong><br> কার্যকাল:০৪-০৬-০১ হতে<br>০৭-১০-০৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ দেলওয়ার হায়দার(ভারপ্রাপ্ত)</strong><br> কার্যকাল: ০৭-১০-০৩ হতে<br>২৮-১০-০৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব  মোঃ সোলায়মান মন্ডল</strong><br> কার্যকাল: ২৭-১০-০৩/২৮-১০-০৩ হতে<br>৩১-০৮-০৫ পর্যন্ত<br><br>
+                                                                <strong>জনাব  মুহাম্মদ  ওয়াহিদুজ্জামান </strong><br> কার্যকাল: ৩১-০৮-০৫ হতে<br>০১-০৬-০৬ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ জাহিদুল ইসলাম</strong><br> কার্যকাল:১৫-০৫-০৬/০১-০৬-০৬ হতে<br>০৪-০৪-০৭ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ সামসুল আরেফিন(ভারপ্রাপ্ত) </strong><br> কার্যকাল:০৪-০৪-০৭ হতে<br>২৬-০৪-০৭ পর্যন্ত<br><br>
+                                                                <strong>জনাব দিলীপ কুমার বণিক</strong><br> কার্যকাল: ২৬-০৪-০৭ হতে<br>৩১-১২-০৯ পর্যন্ত<br><br>
+                                                                <strong>জনাব শাববীর আহমদ</strong><br> কার্যকাল: ৩০-১২-০৯/৩১-১২-০৯ হতে<br>০৪-০৯-১১ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ তৌফিক-ই-লাহী চৌধুরী(অতিঃদাঃ) </strong><br> কার্যকাল: ০৪-০৯-১১হতে<br>২১-০৯-১১ পর্যন্ত<br><br>
+                                                                <strong>জনাব আবু সায়েদ মোঃ মনজুল আলম(ভারপ্রাপ্ত) </strong><br> কার্যকাল: ২১-০৯-১১ হতে<br>২৭-১০-১১ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ দৌলতুজ্জামান খাঁন</strong><br> কার্যকাল:২৭-১০-১১	হতে<br>০৯-০৫-১৩ পর্যন্ত<br><br>
+                                                                <strong>জনাব মোঃ তৌফিক-ই-লাহী চৌধুরী(অতিঃদাঃ)</strong><br> কার্যকাল:	০৯-০৫-১৩	হতে<br>পর্যন্ত
+                                                                </p>
+                                                                
+                                                        </div>
+                                                </div>
+                -->
+
+
+            </div>
+            <div data-role="footer" data-tap-toggle="true" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="index.html" class="ui-btn ui-icon-home ui-btn-icon-top" rel="external"></a></li> 
+                        <li><a onclick="window.history.back()" href="#" data-icon="back"></a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
